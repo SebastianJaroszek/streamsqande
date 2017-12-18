@@ -8,7 +8,7 @@ package pl.dominisz;
  * instead of nested for loops.
  * Hint: Make a pipeline that invokes the filter, sorted, and collect operations, in that order.
  */
-public class ExerciseTwo {
+/*public class ExerciseTwo {
 
     public static void main(String[] args) {
         List<Album> favs = new ArrayList<>();
@@ -29,4 +29,4 @@ public class ExerciseTwo {
             }
         });
     }
-}
+}*/
