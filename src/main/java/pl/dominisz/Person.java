@@ -1,5 +1,10 @@
 package pl.dominisz;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class Person {
 
     private String name;
@@ -10,7 +15,7 @@ public class Person {
         FEMALE;
     }
 
-    public Person(String name, Sex gender) {
+    /*public Person(String name, Sex gender) {
         this.name = name;
         this.gender = gender;
     }
@@ -29,5 +34,5 @@ public class Person {
 
     public void setGender(Sex gender) {
         this.gender = gender;
-    }
+    }*/
 }
