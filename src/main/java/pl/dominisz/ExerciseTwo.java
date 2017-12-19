@@ -41,7 +41,7 @@ public class ExerciseTwo {
         //Collections.sort(favs, (a1, a2) -> a1.getName().compareTo(a2.getName()));
     }
 
-    private static List<Album> createAlbums() {
+    /*private static List<Album> createAlbums() {
         List<Album> albums = new ArrayList<>();
         albums.add(new Album("Vudoe NIEPAMIĘĆ", createTracks(-2)));
         albums.add(new Album("PW NOTABENE", createTracks(3)));
@@ -57,5 +57,22 @@ public class ExerciseTwo {
         tracks.add(new Track(1 + count));
         tracks.add(new Track(2 + count));
         return tracks;
+    }*/
+
+    private static List<Album> createAlbums(){
+        List<Album> albums = new ArrayList<>();
+        albums.add(createAlbum("Vudoe NIEPAMIĘĆ", 1, 2, 3, 1, 0));
+        albums.add(createAlbum("PW NOTABENE", 6, 7));
+        albums.add(createAlbum("JWP SEQUEL", 4, 5, 6, 2, 3, 10));
+        return albums;
+    }
+
+    private static Album createAlbum(String name, int... track){
+        List<Track> tracks = new ArrayList<>();
+        for (int i = 0; i < track.length; i++) {
+            tracks.add(new Track(track[i]));
+        }
+        Album album = new Album(name, tracks);
+        return album;
     }
 }
