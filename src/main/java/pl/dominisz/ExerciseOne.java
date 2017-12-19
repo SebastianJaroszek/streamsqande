@@ -14,11 +14,18 @@ public class ExerciseOne {
 
     public static void main(String[] args) {
         List<Person> roster = createRoster();
+
+        System.out.println("For-each:");
         for (Person p : roster) {
             if (p.getGender() == Person.Sex.MALE) {
                 System.out.println(p.getName());
             }
         }
+
+        System.out.println("\nStream:");
+        roster.stream()
+                .filter(person -> person.getGender() == Person.Sex.MALE)
+                .forEach(person -> System.out.println(person.getName()));
     }
 
     private static List<Person> createRoster() {
