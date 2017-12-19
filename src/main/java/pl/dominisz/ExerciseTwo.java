@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Exercise from
@@ -16,9 +17,9 @@ import java.util.List;
 public class ExerciseTwo {
 
     public static void main(String[] args) {
-        List<Album> favs = new ArrayList<>();
+        //List<Album> favs = new ArrayList<>();
         List<Album> albums = createAlbums();
-        for (Album a : albums) {
+        /*for (Album a : albums) {
             boolean hasFavorite = false;
             for (Track t : a.getTracks()) {
                 if (t.getRating() >= 4) {
@@ -28,17 +29,30 @@ public class ExerciseTwo {
             }
             if (hasFavorite)
                 favs.add(a);
-        }
-        Collections.sort(favs, new Comparator<Album>() {
+        }*/
+
+        List<Album> favs = albums.stream()
+                .filter(album -> album.getTracks().stream()
+                        .anyMatch(track -> track.getRating() >= 4)
+                )
+                .sorted((a1, a2) -> a1.getName().compareTo(a2.getName()))
+                //.forEach(album -> favs.add(album));
+                .collect(Collectors.toList());
+
+        /*Collections.sort(favs, new Comparator<Album>() {
             public int compare(Album a1, Album a2) {
                 return a1.getName().compareTo(a2.getName());
             }
-        });
+        });*/
+
+        //Collections.sort(favs, (a1, a2) -> a1.getName().compareTo(a2.getName()));
 
         favs.stream()
                 .forEach(fav -> System.out.println(fav.getName()));
 
-        //Collections.sort(favs, (a1, a2) -> a1.getName().compareTo(a2.getName()));
+        favs.stream()
+                .forEach(System.out::println);
+
     }
 
     /*private static List<Album> createAlbums() {
